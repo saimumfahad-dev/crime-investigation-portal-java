@@ -165,7 +165,7 @@ public class CrimeReportForm extends JFrame {
             JOptionPane.showMessageDialog(this,
                     "Emergency Report Submitted!\n" +
                             "Case ID: " + caseId + "\n" +
-                            "Nearby authority will be notified.\n" +
+                            "This demo does not contact or notify emergency services.\n" +
                             "Emergency Hotline: 999");
         } else {
             JOptionPane.showMessageDialog(this,
