@@ -118,6 +118,22 @@ This is a learning project, not a production-ready crime reporting system:
 - Add automated tests and improved error handling.
 - Implement proper evidence storage and controlled access, if appropriate for a secure demonstration.
 
+
+## Application Screenshots
+
+### Welcome Screen
+![Welcome Screen](screenshots/welcome-screen.png)
+
+### Crime Report Form
+![Crime Report Form](screenshots/crime-report-form.png)
+
+### Admin Dashboard
+![Admin Dashboard](screenshots/admin-dashboard.png)
+
+### Investigator Dashboard
+![Investigator Dashboard](screenshots/investigator-dashboard.png)
+
+
 ## Author
 
 **Md Saimum Islam Fahad**  
