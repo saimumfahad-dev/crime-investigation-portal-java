@@ -1,142 +1,173 @@
 
-# Crime Investigation Portal (Java Swing)
+<h1 align="center">Crime Investigation Portal</h1>
 
-A desktop-based **crime reporting and case management prototype** developed in Java as an academic software project. It provides separate interfaces for victims, administrators, and investigators to demonstrate report submission, case assignment, status updates, and case tracking.
+<p align="center">
+  <strong>A Java Swing desktop prototype for reporting and managing fictional cases.</strong><br />
+  An academic project exploring desktop interfaces, role-specific workflows, and local persistence.
+</p>
 
-> **Academic demonstration only.** This application is not connected to law enforcement or emergency services. It must not be used to submit real crime reports or handle sensitive personal information.
+<p align="center">
+  <img src="https://img.shields.io/badge/Language-Java-0F766E?style=flat-square&logo=openjdk&logoColor=white" alt="Java" />
+  <img src="https://img.shields.io/badge/UI-Java%20Swing-17252A?style=flat-square" alt="Java Swing" />
+  <img src="https://img.shields.io/badge/Storage-Local%20Files-0F766E?style=flat-square" alt="Local files" />
+  <img src="https://img.shields.io/badge/Type-Academic%20Prototype-263238?style=flat-square" alt="Academic prototype" />
+</p>
+
+<p align="center">
+  <a href="#overview">Overview</a> ·
+  <a href="#features">Features</a> ·
+  <a href="#application-screenshots">Screenshots</a> ·
+  <a href="#getting-started">Getting Started</a>
+</p>
+
+---
+
+## Overview
+
+**Crime Investigation Portal** is a desktop application developed using **Java and Swing**. It models a fictional crime-reporting workflow with separate victim, administrator, and investigator interfaces.
+
+The project demonstrates GUI event handling, object-oriented programming, case records, and local file operations. It is not connected to police, emergency services, or a production backend.
 
 ## Features
 
-### Victim interface
-
-- Submit a crime report with incident type, category, date, time, location, and description.
-- Optionally enter suspect, victim, and witness information.
-- Select an evidence file path using a file chooser (the file itself is **not uploaded or copied**).
-- Confirm the form's three consent checkboxes before submitting.
-- Receive a generated case ID and track a case by that ID.
-
-### Administrator interface
-
-- View saved reports in a table.
-- Assign an investigator to a selected case.
-- Update case status (for example, *Under Review*, *Investigation Started*, or *Closed*).
-- Refresh the dashboard to display current locally stored records.
-
-### Investigator interface
-
-- View cases assigned to the signed-in investigator name.
-- Review the details of an assigned case.
-- Update a case's status to *Investigation Started*, *Evidence Requested*, or *Closed*.
-
-## Tech stack
-
-- **Language:** Java
-- **GUI:** Java Swing and AWT
-- **Data storage:** Local text file (`reports.txt`)
-- **Dependencies:** Java standard library only; no external libraries or database required
-
-## Getting started
-
-### Requirements
-
-- A Java Development Kit (JDK), version 8 or newer
-- A desktop environment capable of displaying Java Swing windows
-
-### Compile and run
-
-The Java source files are currently stored at the root of this repository.
-
-From a terminal in the repository folder, compile the source files:
-
-```bash
-javac *.java
-```
-
-Start the application:
-
-```bash
-java Main
-```
-
-The welcome screen offers three roles: **Victim**, **Admin**, and **Investigator**. Admin and investigator authentication currently use hardcoded **demonstration credentials** in their respective login classes; this is not secure authentication.
-
-## Example workflow
-
-1. Select **Victim** and open **Submit Crime Report**.
-2. Complete the required fields, accept the consent checkboxes, and submit a sample report.
-3. Record the displayed case ID.
-4. Use **Track Case** to look up the report and its current status.
-5. Open the **Admin** interface to assign an investigator and change its status.
-6. Open the **Investigator** interface to view cases assigned to that login and update their status.
-
-Use fictional sample details only.
-
-## Project structure
-
-| File | Purpose |
+| Interface | Implemented functionality |
 | --- | --- |
-| `Main.java` | Application entry point |
-| `WelcomeFrame.java` | Role selection and navigation |
-| `VictimDashboard.java` | Victim menu for report submission and tracking |
-| `CrimeReportForm.java` | Report input form, validation, and submission |
-| `CaseTrackingFrame.java` | Case lookup by case ID |
-| `CrimeReport.java` | Report data model and text serialization |
-| `ReportService.java` | Case ID generation, local storage, lookup, assignment, and status updates |
-| `AdminLoginFrame.java` | Demo administrator login |
-| `AdminDashboard.java` | Report table, investigator assignment, and case status management |
-| `InvestigatorLoginFrame.java` | Demo investigator login |
-| `InvestigatorDashboard.java` | Assigned-case list, case details, and status updates |
+| Welcome screen | Navigate between victim, administrator, and investigator flows |
+| Victim | Complete a crime report form and receive a case ID |
+| Administrator | View reports, assign investigators, and update case status |
+| Investigator | View assigned cases, inspect details, and update case status |
+| Case tracking | Look up case information through the application interface |
+| Local persistence | Store and load report information using local files |
 
-## How data is stored
-
-- Records are saved locally to `reports.txt` in the application's current working directory.
-- Each report is stored as a single pipe-separated line.
-- Case IDs are generated using the current timestamp, such as `CASE-20261105123045`.
-- Report updates rewrite the saved report list.
-- The selected evidence file is stored only as a path string; the evidence file itself is not copied into the project.
-
-**Do not commit `reports.txt` to GitHub.** It may contain personal information. Add `reports.txt` to `.gitignore` before creating sample reports.
-
-## Known limitations
-
-This is a learning project, not a production-ready crime reporting system:
-
-- Admin and investigator logins use hardcoded demonstration credentials.
-- Report data is stored as unencrypted local text, without a secure database or access control.
-- Case IDs use second-resolution timestamps and may collide when reports are submitted within the same second.
-- Input validation and error reporting for storage operations are limited.
-- Evidence selection records a file path; there is no actual evidence upload or file transfer.
-- **No real emergency notification is sent.** The original report form displayed a misleading notification message; the corrected `CrimeReportForm.java` explicitly states that the demo does not contact emergency services.
-- The application has no networking backend, multi-user synchronization, or automated tests in the provided source.
-
-## Possible future improvements
-
-- Replace hardcoded credentials with proper authentication and role-based access control.
-- Add a database and safer report storage with appropriate privacy protections.
-- Generate collision-resistant case IDs.
-- Validate input formats and confirm successful report saves before showing success messages.
-- Add automated tests and improved error handling.
-- Implement proper evidence storage and controlled access, if appropriate for a secure demonstration.
-
+The report form includes incident and crime categories, incident details, evidence path selection, and consent checkboxes.
 
 ## Application Screenshots
 
-### Welcome Screen
-![Welcome Screen](screenshots/welcome-screen.png)
+<p align="center">
+  <img src="screenshots/welcome-screen.png" alt="Welcome screen" width="540" />
+  <br /><sub>Welcome Screen</sub>
+</p>
 
-### Crime Report Form
-![Crime Report Form](screenshots/crime-report-form.png)
+<p align="center">
+  <img src="screenshots/crime-report-form.png" alt="Crime report form" width="540" />
+  <br /><sub>Crime Report Form</sub>
+</p>
 
-### Admin Dashboard
-![Admin Dashboard](screenshots/admin-dashboard.png)
+<details>
+<summary><strong>View Dashboard Screenshots</strong></summary>
 
-### Investigator Dashboard
-![Investigator Dashboard](screenshots/investigator-dashboard.png)
+<p align="center">
+  <img src="screenshots/admin-dashboard.png" alt="Administrator dashboard" width="540" />
+  <br /><sub>Administrator Dashboard</sub>
+</p>
 
+<p align="center">
+  <img src="screenshots/investigator-dashboard.png" alt="Investigator dashboard" width="540" />
+  <br /><sub>Investigator Dashboard</sub>
+</p>
 
-## Author
+</details>
 
-**Md Saimum Islam Fahad**  
-Computer Science & Engineering Undergraduate, North South University  
-[LinkedIn](https://www.linkedin.com/in/md-saimum-islam-fahad/)
-  
+## Technologies & Concepts
+
+<p>
+  <img src="https://skillicons.dev/icons?i=java&theme=dark" alt="Java programming language" height="44" />
+</p>
+
+- **Language:** Java
+- **GUI:** Java Swing
+- **Development tools:** IntelliJ IDEA, VS Code
+- **Concepts:** Object-oriented programming, classes, event handling, desktop UI design, and file I/O
+- **Data storage:** Local file-based report storage
+
+## Getting Started
+
+### Requirements
+
+- Java Development Kit (JDK)
+- A terminal or a Java-compatible IDE
+- A desktop operating system with GUI support
+
+### Compile and Run
+
+Open the folder containing `Main.java` and the other Java source files.
+
+On a Unix-like terminal:
+
+```bash
+javac *.java
+java Main
+```
+
+Alternatively, open the source folder in VS Code or IntelliJ IDEA and run `Main.java`.
+
+### Basic Workflow
+
+1. Launch the application.
+2. Select a role from the welcome screen.
+3. As a **Victim**, submit a fictional test report.
+4. As an **Administrator**, review cases and assign an investigator.
+5. As an **Investigator**, view assigned cases and update their status.
+
+Use fictional information only. Demo authentication is hardcoded and must not be treated as secure access control.
+
+## Project Structure
+
+```text
+crime-investigation-portal-java/
+├── Main.java
+├── WelcomeFrame.java
+├── VictimDashboard.java
+├── CrimeReportForm.java
+├── CrimeReport.java
+├── ReportService.java
+├── CaseTrackingFrame.java
+├── AdminLoginFrame.java
+├── AdminDashboard.java
+├── InvestigatorLoginFrame.java
+├── InvestigatorDashboard.java
+├── screenshots/
+│   ├── welcome-screen.png
+│   ├── crime-report-form.png
+│   ├── admin-dashboard.png
+│   └── investigator-dashboard.png
+├── .gitignore
+└── README.md
+```
+
+## What I Practiced
+
+- Designing graphical interfaces using Java Swing
+- Applying object-oriented programming principles
+- Managing user interactions through event handling
+- Organizing application functionality into multiple classes
+- Managing case information using file operations
+- Documenting software functionality with screenshots
+
+## Limitations
+
+- Emergency-type reports do not contact emergency services.
+- Evidence selection records a file path; it does not upload the file.
+- Login credentials are hardcoded for demonstration.
+- Report storage is local, without a database or online synchronization.
+- Case ID generation and input validation are not designed for production use.
+
+**This application is an educational prototype, not an official crime-reporting system.**
+
+## Future Improvements
+
+- Secure authentication and authorization
+- Database integration
+- Stronger input validation
+- Collision-resistant case IDs
+- Automated testing and error handling
+- Controlled evidence storage and access permissions
+
+---
+
+<p align="center">
+  <a href="https://github.com/saimumfahad-dev">GitHub Profile</a> ·
+  <a href="https://www.linkedin.com/in/md-saimum-islam-fahad/">LinkedIn</a>
+  <br />
+  <sub>Built for learning · Code · Build · Learn</sub>
+</p>
